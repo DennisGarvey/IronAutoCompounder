@@ -95,3 +95,9 @@ const job = schedule.scheduleJob(config.schedule, function(){
     console.log(`${chalk.bgBlue.bold(" Info ")} ${chalk.bold("Compounding now!")}`)
     compoundAll()
 })
+const checkBal = schedule.scheduleJob("0 * * * *", async function(){
+    bal = await web3.eth.getBalance(account.address)
+    if(bal == 0){
+        console.log(`${chalk.bgYellow.red.bold(" WARN ")} ${chalk.bold("balance of bot is 0!")} Please send a small amount of matic to the bot address`)
+    }
+})
