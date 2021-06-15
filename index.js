@@ -5,7 +5,7 @@ const contractABI = require('./contractABI.json')
 const config = getConfig()
 const web3 = new Web3(new Web3.providers.HttpProvider(config.rpcUrl))
 const wallet = getAccount()
-
+const schedule = require('node-schedule')
 function getAccount(){
     if(!fs.existsSync('botWallet.json')){
         account = web3.eth.accounts.create()
@@ -43,6 +43,7 @@ function getConfig(){
                 "your farm contract here",
                 "you can delete these or add more"
             ],
+            "schedule": "0 0 * * *",
             "rpcUrl": "https://rpc-mainnet.maticvigil.com/",
             "gasPrice": 1,
             "gasLimit": 1000000
@@ -85,4 +86,7 @@ async function compoundAll(){
         await compound(config.farms[i])
     }
 }
-compoundAll()
+const job = schedule.scheduleJob(config.schedule, function(){
+    console.log(`${chalk.bgBlue.bold(" Info ")} ${chalk.bold("Compounding now!")}`)
+    compoundAll()
+})

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.1",
+    "node-schedule": "^2.0.0",
     "web3": "^1.3.6"
   }
 }
