@@ -81,9 +81,13 @@ async function compound(contractAddress){
     }
    
 }
+function sleep(ms){
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 async function compoundAll(){
     for(i in config.farms){
         await compound(config.farms[i])
+        await sleep(5000)
     }
 }
 const job = schedule.scheduleJob(config.schedule, function(){
