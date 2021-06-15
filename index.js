@@ -1,6 +1,6 @@
 const fs = require('fs')
 const chalk = require('chalk')
-const Web3 = require('Web3')
+const Web3 = require('web3')
 const contractABI = require('./contractABI.json')
 const config = getConfig()
 const web3 = new Web3(new Web3.providers.HttpProvider(config.rpcUrl))
