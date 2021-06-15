@@ -6,6 +6,7 @@ const config = getConfig()
 const web3 = new Web3(new Web3.providers.HttpProvider(config.rpcUrl))
 const wallet = getAccount()
 const schedule = require('node-schedule')
+
 function getAccount(){
     if(!fs.existsSync('botWallet.json')){
         account = web3.eth.accounts.create()
