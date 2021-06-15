@@ -75,7 +75,7 @@ async function compound(contractAddress){
     try{
         console.log(`${chalk.bgBlue.bold(" Info ")} ${chalk.bold("Sending Transaction")} Hash: ${signed.transactionHash}`)
         receipt = await web3.eth.sendSignedTransaction(signed.rawTransaction)
-        console.log(`${chalk.bgGreen.bold(" Transaction confirmed ")} ${chalk.bold("Compounded farm")} ${contractAddress} ${chalk.bold("at tx")} ${receipt.blockHash}`)
+        console.log(`${chalk.bgGreen.bold(" Transaction Confirmed ")} ${chalk.bold("Compounded farm")} ${contractAddress} ${chalk.bold("at tx")} ${receipt.blockHash}`)
     }
     catch(error){
         console.log(`${chalk.bgRed.bold(" Error ")} ${chalk.red.bold.underline(error.message)}`)
